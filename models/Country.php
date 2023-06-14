@@ -23,11 +23,46 @@
             $cols = join(',', array_keys($data));
             $sql = "INSERT INTO countries ($cols) VALUES ($valorCols)";
             $stmt = self :: $conn -> prepare($sql);
-            $stmt -> execute($data);
+            
+            try {
+                $stmt -> execute($data);
+                $response = [[
+                    'id_country' => self :: $conn -> lastInsertId(), //permite obtener el ultimo Id que se a insertado (por se auto-incremental)
+                    'name_country' => $data['name_country']
+                ]]; 
+            } catch (\PDOException $e) {
+                return $sql . "<br/>" . $e -> getMessage();
+            }
 
+            return $response;
             
         }
 
+        //Cargamos todos los datos del la base de datos para verla en el HTML
+        public function loadAllData() {
+            $sql = "SELECT id_country, name_country FROM countries";
+            $stmt = self :: $conn -> prepare($sql);
+            $stmt -> execute();
+            $miSgav = $stmt -> fetchAll(\PDO :: FETCH_ASSOC);
+            return $miSgav;
+        } 
+
+        //funcion para borrar datos de la base de datos
+        public function deleteData($id) {
+            $sql = "DELETE FROM countries WHERE id_country = :id";
+            $stmt = self :: $conn -> prepare($sql);
+            $stmt -> bindParam(':id', $id);
+            $stmt -> execute();
+        }
+
+        //funcion para editar los datos de la base de datos 
+        public function updateData($data) {
+            $sql = "UPDATE countries SET name_country = :name_country WHERE id_country = :id";
+            $stmt = self :: $conn -> prepare($sql);
+            $stmt -> bindParam(':name_country', $data['name_country']);
+            $stmt -> bindParam(':id', $data['id_country']);
+            $stmt -> execute();
+        }
 
         //acontinuacion se escribe la funcion de sanitizacion
         //para prevenir inyesion de cosigo SQL y caracteres especiales 

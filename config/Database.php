@@ -11,7 +11,7 @@
 
                 'driver' => 'mysql',
                 'host' => 'localhost',
-                //'host' => '172.16.48.230',
+                //'host' => '172.16.48.210',
                 'username' => 'root', 
                 //'username' => 'campus',
                 //'username' => 'apolo',
@@ -39,7 +39,7 @@
 
                 'driver' => 'pgsql',
                 'host' => 'localhost',
-                //'host' => '172.16.48.230',
+                //'host' => '172.16.48.210',
                 'username' => 'postgres',
                 //'username' => 'campers25',
                 'database' => 'sgavapp',

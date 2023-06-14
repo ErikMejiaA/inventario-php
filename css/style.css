@@ -1,0 +1,43 @@
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@500&family=Roboto+Condensed:ital,wght@1,300;1,400&family=Source+Code+Pro:ital@1&display=swap');
+
+/* logo de nav en donde sea aplicable */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/*header{
+    width: 100%;
+}*/
+
+
+/*.encabezado{
+    background-image: url(/images/headers_fondo.jpg);
+    padding: 10px;
+    display: flex;
+    flex-direction: row;
+    margin: 0;
+    text-align: center;
+    flex-wrap:nowrap;
+    width:100%;
+    font-size: 25px;
+    align-items: center;
+    
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}*/
+
+#logo{
+    width: 250px;
+}
+
+body {
+    font-family: 'Roboto Condensed', sans-serif;
+	/*background-image: url(/images/fondo.jpg);
+	color: #1d1d1d;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;*/
+}
